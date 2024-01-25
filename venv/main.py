@@ -71,7 +71,7 @@ async def power_monitor_simulation(iterations=60):
         # Update the visualization with the simulated data
         update_power_visual(simulated_power_data)
 
-        await asyncio.sleep(0.01)  # Update every second
+        await asyncio.sleep(0.01)  # Update every 0.01 second for faster test
 
 # Start the asyncio loop with the simulation function
 asyncio.run(power_monitor_simulation())
