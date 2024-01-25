@@ -1,14 +1,16 @@
+import asyncio
+from kasa import SmartPlug
+import random
 from cwruxr_sdk.common import *
-from cwruxr_sdk.object_message import *
 from cwruxr_sdk.client import *
+from cwruxr_sdk.object_message import *
 
 ENDPOINT = "https://cwruxrstudents.azurewebsites.net/api/v2/"
 ROOM_ID = "VI"
 ANCHOR_ID = "v2"
 API_KEY = "[yourapikey]"
 
-import asyncio
-from kasa import SmartPlug
+
 
 cwruxrClient = Client(ENDPOINT, ROOM_ID, ANCHOR_ID, API_KEY)
 
@@ -58,3 +60,18 @@ def update_power_visual(power_value):
 
 # # Start the asyncio loop
 # asyncio.run(power_monitor())
+#####
+
+async def power_monitor_simulation(iterations=60):
+    for _ in range(iterations):
+    #while True:
+        # Generate a random power value for simulation (e.g., between 0 and 100 watts)
+        simulated_power_data = random.uniform(0, 100)
+
+        # Update the visualization with the simulated data
+        update_power_visual(simulated_power_data)
+
+        await asyncio.sleep(0.01)  # Update every second
+
+# Start the asyncio loop with the simulation function
+asyncio.run(power_monitor_simulation())
